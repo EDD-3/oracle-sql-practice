@@ -26,7 +26,7 @@ select * from dual;
 --Quote operator
 select  'My Name is Adam' as "Output" from dual;
 
-select  q'[My Name is Adam and I don't like apples]' as "Quote Operator" from dual;
+select  q'[My Name is Adam and I dont like apples]' as "Quote Operator" from dual;
 
 
 select job_id from employees;
@@ -70,3 +70,11 @@ SELECT employee_id, hire_date, hire_date+365 as "Next anniversary" FROM employee
 
 --Arithmetic operations with null return null
 SELECT salary, salary*commission_pct, commission_pct FROM employees;
+
+
+-- Exercise 1 solution
+
+SELECT DISTINCT product_status FROM products;
+
+-- Exercise 2 solution
+SELECT employee_id, salary, (salary*1.20)+1000 AS new_salary FROM employees;
