@@ -110,6 +110,21 @@ SELECT * FROM employees WHERE first_name LIKE '%a%';
 -- Matches any character _, the returning first name must start with any character but it must be followed by the r
 SELECT * FROM employees WHERE first_name LIKE '_r%';
 
+-- IS NULL operator
+SELECT * FROM employees WHERE commission_pct IS NULL;
+
+SELECT * FROM employees WHERE commission_pct IS NOT NULL;
+
+-- Using AND OR NOT
+SELECT * FROM employees WHERE job_id = 'SA_REP'
+AND salary > 10000 AND first_name = 'Lisa';
+
+SELECT * FROM employees WHERE job_id = 'SA_REP'
+OR salary > 10000 ;
+
+SELECT * FROM employees WHERE salary > 10000 
+AND job_id NOT IN ('SA_MAN', 'SA_REP');
+
 
 -- Exercise 1 solution
 SELECT DISTINCT product_status FROM products;
@@ -129,3 +144,8 @@ FROM employees
     SELECT employee_id, first_name, last_name, job_id 
 FROM employees 
  WHERE job_id LIKE '%MAN';
+
+-- Exercise 6 solution
+ SELECT employee_id, first_name, last_name, salary 
+FROM employees
+    WHERE salary < 10000 AND job_id LIKE '%MAN';
