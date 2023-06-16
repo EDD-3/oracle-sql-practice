@@ -71,10 +71,61 @@ SELECT employee_id, hire_date, hire_date+365 as "Next anniversary" FROM employee
 --Arithmetic operations with null return null
 SELECT salary, salary*commission_pct, commission_pct FROM employees;
 
+-- WHERE clause
+SELECT * FROM employees WHERE salary > 10000;
+
+SELECT * FROM employees WHERE job_id = 'IT_PROG';
+
+-- WHERE clause comparison operators
+
+SELECT * FROM employees WHERE hire_date = '21-MAY-07';
+
+--USE BETWEEN AND
+SELECT * FROM employees WHERE salary BETWEEN 10000 AND 14000;
+
+SELECT * FROM employees WHERE hire_date BETWEEN '17-AUG-02' AND '05-JAN-05';
+
+-- IN OPERATOR
+SELECT * FROM employees
+WHERE employee_id IN (50, 100, 65, 210, 150);
+
+SELECT * FROM employees
+WHERE employee_id IN ('Steven','Peter', 'Adam');
+
+SELECT * FROM employees
+WHERE hire_date IN ('08-MAR-08','30-JAN-05');
+
+-- USING THE LIKE OPERATOR
+SELECT * FROM employees WHERE job_id LIKE 'SA%';
+
+-- All the names that start with the letter A
+SELECT * FROM employees WHERE first_name LIKE 'A%';
+
+-- All the names that end with the letter a
+SELECT * FROM employees WHERE first_name LIKE '%a';
+
+-- Any of the names that have a letter a
+SELECT * FROM employees WHERE first_name LIKE '%a%';
+
+-- Matches any character _, the returning first name must start with any character but it must be followed by the r
+SELECT * FROM employees WHERE first_name LIKE '_r%';
+
 
 -- Exercise 1 solution
-
 SELECT DISTINCT product_status FROM products;
 
 -- Exercise 2 solution
 SELECT employee_id, salary, (salary*1.20)+1000 AS new_salary FROM employees;
+
+--  Exercise 3 solution
+SELECT employee_id, first_name, last_name FROM employees WHERE job_id = "SA_MAN";
+
+-- Exercise 4 solution
+SELECT employee_id, first_name, last_name, job_id 
+FROM employees 
+    WHERE job_id IN('SA_MAN', 'SA_REP');
+
+-- Exercise 5 solution
+    SELECT employee_id, first_name, last_name, job_id 
+FROM employees 
+ WHERE job_id LIKE '%MAN';
