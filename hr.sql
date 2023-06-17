@@ -125,6 +125,21 @@ OR salary > 10000 ;
 SELECT * FROM employees WHERE salary > 10000 
 AND job_id NOT IN ('SA_MAN', 'SA_REP');
 
+-- Operator precedence
+SELECT first_name, last_name, job_id, salary FROM employees
+WHERE job_id = 'IT_PROG' OR job_id = 'ST_CLERK' AND salary > 5000;
+
+SELECT first_name, last_name, job_id, salary FROM employees
+WHERE (job_id = 'IT_PROG' OR job_id = 'ST_CLERK') AND salary > 5000;
+
+SELECT first_name, last_name, department_id, salary
+FROM employees
+WHERE salary > 10000 AND department_id = 20 OR department_id = 30;
+
+SELECT first_name, last_name, department_id, salary
+FROM employees
+WHERE salary > 10000 AND (department_id = 20 OR department_id = 30);
+
 
 -- Exercise 1 solution
 SELECT DISTINCT product_status FROM products;
@@ -149,3 +164,8 @@ FROM employees
  SELECT employee_id, first_name, last_name, salary 
 FROM employees
     WHERE salary < 10000 AND job_id LIKE '%MAN';
+
+-- Exercise 7 solution 
+SELECT employee_id, department_id, job_id, salary 
+FROM employees
+WHERE department_id = 50 OR job_id = "SA_REP" AND salary BETWEEN 5000 AND 10000;
